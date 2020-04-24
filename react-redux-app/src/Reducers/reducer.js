@@ -1,17 +1,19 @@
+import * as actionType from "../Actions/actionTypes.js";
+
 let lastId = 0;
 
-function reducer(state = [], action) {
-  if (action.type === "bugAdded")
+export default function reducer(state = [], action) {
+  if (action.type === actionType.BUG_ADDED)
     return [
       ...state,
       {
         id: ++lastId,
-        desciption: action.payload.desciption,
+        description: action.payload.description,
         resolve: false,
       },
     ];
-  else if (action.type === "buggedRemoved")
-    return state.filter((x) => x.id != action.payload.id);
+  else if (action.type === actionType.BUG_REMOVED)
+    return state.filter((x) => x.id !== action.payload.id);
 
   return state;
 }
