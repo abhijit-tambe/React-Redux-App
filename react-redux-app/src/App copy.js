@@ -1,22 +1,22 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-// import store from "./Store/store.js";
-// import * as actions from "./Actions/actions.js";
+import store from "./Store/store.js";
+import * as actions from "./Actions/actions.js";
 // import actionType from "./Actions/actionTypes.js";
 
 function App() {
-  // const unsubscribe = store.subscribe(() => {
-  //   console.log("store updated", store.getState());
-  // });
+  const unsubscribe = store.subscribe(() => {
+    console.log("store updated", store.getState());
+  });
 
-  // var des = "bug2";
-  // var id = 1;
+  var des = "bug2";
+  var id = 1;
 
-  // store.dispatch(actions.bugAdded(des));
+  store.dispatch(actions.bugAdded(des));
 
-  // // unsubscribe();
-  // store.dispatch(actions.bugRemoved(id));
+  // unsubscribe();
+  store.dispatch(actions.bugRemoved(id));
 
   return (
     <div className="App">
