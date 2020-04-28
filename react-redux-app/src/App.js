@@ -4,6 +4,8 @@ import "./App.css";
 // import store from "./Store/store.js";
 // import * as actions from "./Actions/actions.js";
 // import actionType from "./Actions/actionTypes.js";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "./rootReducer.js";
 
 function App() {
   // const unsubscribe = store.subscribe(() => {
@@ -17,6 +19,17 @@ function App() {
 
   // // unsubscribe();
   // store.dispatch(actions.bugRemoved(id));
+
+  // const uns = store.subsribe(() => {
+  //   console.log(store.getState());
+  // });
+  // const unsub = store.subscribe(() => {
+  //   console.log(actions.cakeReducer());
+  // });
+  const dispatch = useDispatch();
+  const cakeCounter = useSelector((state) => state.cake.cakeCount);
+  const cookiesCounter = useSelector((state) => state.cookies.cookiesCount);
+  // const cakesub = store.subscibe()
 
   return (
     <div className="App">
@@ -34,7 +47,46 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <h1>REdux app</h1>
+      <h1> REact - REdux app</h1>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>cake</th>
+              <th>cookies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <h3>{cakeCounter}</h3>
+              </td>
+              <td>
+                <h3>{cookiesCounter}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClick={() => dispatch(actions.buyCake(actions.BUY_CAKE))}
+                >
+                  buy Cake
+                </button>
+              </td>
+              <td>
+                <button
+                  onClick={() =>
+                    dispatch(actions.buyCookies(actions.BUY_COOKIES))
+                  }
+                >
+                  buy Cookie
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {/* <h1>Counter : {counter}</h1> */}
     </div>
   );
 }
